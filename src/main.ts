@@ -3,8 +3,8 @@ import { AppModule } from './app.module'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 
 async function bootstrap() {
-	const app = await NestFactory.create(AppModule)
-	const corsOptions = { origin: 'http://localhost:3000' }
+	const app = await NestFactory.create(AppModule, { cors: true })
+	const corsOptions = { origin: 'https://structure-base-frontend.vercel.app/' }
 	const config = new DocumentBuilder()
 		.setTitle('Structure Backend')
 		.setDescription('The structure backend API description')
