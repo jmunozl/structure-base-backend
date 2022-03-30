@@ -1,4 +1,3 @@
-web: yarn prebuild
 web: yarn build
 web: yarn format
 web: yarn lint
