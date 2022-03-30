@@ -4,6 +4,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 
 async function bootstrap() {
 	const app = await NestFactory.create(AppModule)
+	const corsOptions = { origin: 'http://localhost:3000' }
 	const config = new DocumentBuilder()
 		.setTitle('Structure Backend')
 		.setDescription('The structure backend API description')
@@ -12,7 +13,7 @@ async function bootstrap() {
 		.build()
 	const document = SwaggerModule.createDocument(app, config)
 	SwaggerModule.setup('api', app, document)
-	app.enableCors()
+	app.enableCors(corsOptions)
 	await app.listen(process.env.PORT || 4000)
 }
 bootstrap()
