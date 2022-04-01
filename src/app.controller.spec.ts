@@ -15,8 +15,9 @@ describe('AppController', () => {
 	})
 
 	describe('root', () => {
+		const expected = { message: 'Hello from API V2' }
 		it('should return "Hello World!"', () => {
-			expect(appController.getHello()).toBe('Hello World!')
+			expect(appController.getHello()).toEqual(expect.objectContaining(expected))
 		})
 	})
 })
