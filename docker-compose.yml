@@ -2,18 +2,18 @@ version: '3.9'
 
 services:
 
-  postgres:
-    image: postgres
+  db:
+    image: postgres:10.20-alpine3.15
+    container_name: database
     restart: always
-    ports:
-      - "5432:5432"
-    volumes:
-      - ./data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_HOST=127.0.0.1
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=mydb
+      - POSTGRES_DB=postgres
+    volumes:
+      - /var/lib/postgresql/data
+    ports:
+      - "5432:5432"
   
   pgadmin:
     image: dpage/pgadmin4
@@ -22,5 +22,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: "root"
     ports:
       - "80:80"
+    volumes:
+      - /var/lib/pgadmin
     depends_on:
-      - postgres
+      - db
