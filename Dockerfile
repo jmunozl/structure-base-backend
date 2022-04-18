@@ -1,6 +1,6 @@
-FROM alpine
+FROM alpine:3.15
 
-RUN apk add --update nodejs yarn 
+RUN apk add --update yarn 
 
 WORKDIR /app
 
